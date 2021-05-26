@@ -33,7 +33,7 @@ resource_fields={'id':fields.Integer,
                  'name':fields.String,
                  'views':fields.Integer,
                  'likes':fields.Integer}
-@app.route('/')
+
 class Video(Resource):
     
     @marshal_with(resource_fields)
@@ -71,6 +71,12 @@ class Video(Resource):
     def delete(self,video_id):
         return '',204
     
+    
+@app.route('/')
+def test():
+        BASE="http://127.0.0.1:5000/"
+        response=requests.get(BASE+"video/1/")
+        return response.json()
 
     
     
